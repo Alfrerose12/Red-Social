@@ -3,27 +3,38 @@ const bcrypt = require("bcryptjs");
 
 
 exports.register = async (req, res) => {
-    try {
-      const { name, email, password } = req.body;
-  
-      // Verificar si el usuario ya existe
-      const existingUser = await User.findOne({ email });
-      if (existingUser) {
-        return res.status(400).json({ message: 'El correo ya está registrado' });
-      }
-  
-      // Encriptar la contraseña
-      const hashedPassword = await bcrypt.hash(password, 10);
-  
-      // Crear el nuevo usuario
-      const newUser = new User({ name, email, password: hashedPassword });
-      await newUser.save();
-  
-      res.status(201).json({ message: 'Usuario registrado exitosamente' });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+  try {
+    const { name, email, password } = req.body;
+
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: 'Por favor ingrese un email válido' });
     }
-  };
+
+    // Verificar si el usuario ya existe
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'El correo ya está registrado' });
+    }
+
+    // Validar longitud de la contraseña
+    if (password.length < 9) {
+      return res.status(400).json({ message: 'La contraseña debe tener al menos 9 caracteres' });
+    }
+
+    // Encriptar la contraseña
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Crear el nuevo usuario
+    const newUser = new User({ name, email, password: hashedPassword });
+    await newUser.save();
+
+    res.status(201).json({ message: 'Usuario registrado exitosamente' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
   exports.login = async (req, res) => {
     try {

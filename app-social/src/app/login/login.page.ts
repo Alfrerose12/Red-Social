@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,21 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
   standalone: false
 })
-export class LoginPage implements OnInit {
 
+export class LoginPage implements OnInit {
   email: string = '';
   password: string = '';
-  constructor(private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
   }
-  // doLogin() {
-  //   this.authService.login(this.email, this.password).then(() => {
-  //     this.router.navigate(['/home']);
-  //   }).catch((err: Error) => {
-  //     alert('Los datos son incorrectos o no existe el usuario');
-  //   });
-  // }
   loginFacebook() {
     alert('funciona')
 }  
