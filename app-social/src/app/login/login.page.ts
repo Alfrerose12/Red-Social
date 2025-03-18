@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,27 @@ import { ApiService } from '../services/api.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  email: string = '';
+  password: string = '';
+
+  constructor(private apiService: ApiService, private navController: NavController) { }
 
   ngOnInit() {
   }
 
   sesion() {
-    
+    const credentials = {
+      email: this.email,
+      password: this.password
+    };
+    this.apiService.login(credentials).subscribe((response) => {
+      console.log(response);
+      this.navController.navigateForward('/tabs/inicio');
+    },
+      (error) => {
+        console.log('Error en el login:', error);
+      }
+    );
   }
 
   sesionGoogle() {

@@ -15,6 +15,7 @@
           labelPlacement="floating"
           type="text"
           placeholder="Ingresa tu nombre completo"
+          [(ngModel)]="name"
           required
         ></ion-input>
         <ion-text slot="end" color="danger">*</ion-text>
@@ -27,6 +28,7 @@
           type="email"
           placeholder="Ingresa tu correo"
           required
+          [(ngModel)]="email"
         ></ion-input>
         <ion-text slot="end" color="danger">*</ion-text>
       </ion-item>
@@ -38,6 +40,7 @@
           type="password"
           placeholder="Ingresa tu contraseña"
           required
+          [(ngModel)]="password"
         ></ion-input>
         <ion-text slot="end" color="danger">*</ion-text>
       </ion-item>
