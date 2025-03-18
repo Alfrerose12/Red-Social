@@ -37,8 +37,8 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/likes`, { postId });
   }
 
-  googleAuth(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/auth/google`);
+  googleAuth(): void {
+    window.location.href = `${this.apiUrl}/auth/google`;
   }
 
 }
