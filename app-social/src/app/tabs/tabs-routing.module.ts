@@ -12,12 +12,12 @@ const routes: Routes = [
         loadChildren: () => import('../inicio/inicio.module').then( m => m.InicioPageModule)
       },
       {
-        path: 'video',
-        loadChildren: () => import('../video/video.module').then( m => m.VideoPageModule)
-      },
-      {
         path: 'amigos',
         loadChildren: () => import('../amigos/amigos.module').then( m => m.AmigosPageModule)
+      },
+      {
+        path: 'ajustes',
+        loadChildren: () => import('../ajustes/ajustes.module').then( m => m.AjustesPageModule)
       },
       {
         path: '',
