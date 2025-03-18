@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar class="ion-text-center">
     <ion-title>Inicio de Sesión</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,6 +16,7 @@
           type="email"
           placeholder="Ingresa tu correo"
           required
+          [(ngModel)]="email"
         ></ion-input>
         <ion-text slot="end" color="danger">*</ion-text>
       </ion-item>
@@ -27,6 +28,7 @@
           type="password"
           placeholder="Ingresa tu contraseña"
           required
+          [(ngModel)]="password"
         ></ion-input>
         <ion-text slot="end" color="danger">*</ion-text>
       </ion-item>
