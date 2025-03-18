@@ -10,7 +10,7 @@ const likeController = require("../controllers/likeController");
 // Rutas de Usuario (Autenticación y Perfil)
 router.post("/register", userController.register);
 router.post("/login", userController.login);
-router.get("/profile", userController.getProfile);
+router.post('/profile', userController.getProfile);
 
 // Rutas de Publicaciones
 router.post("/posts", postController.createPost);

@@ -58,11 +58,31 @@ exports.register = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   };
-exports.getProfile = async (req, res) => {
-  try {
-    const user = await User.findById(req.user.id).select("-password");
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+
+  exports.getProfile = async (req, res) => {
+    try {
+      const { userId } = req.body; // Recibe el userId desde el cuerpo de la solicitud
+      if (!userId) {
+        return res.status(400).json({ message: 'Se requiere el ID del usuario' });
+      }
+  
+      // Busca al usuario en la base de datos
+      const user = await User.findById(userId).select('-password'); // Excluye la contraseña
+      if (!user) {
+        return res.status(404).json({ message: 'Usuario no encontrado' });
+      }
+  
+      // Mapea _id a id antes de enviar la respuesta
+      const userProfile = {
+        id: user._id, // Mapea _id a id
+        name: user.name,
+        email: user.email,
+        profilePicture: user.profilePicture,
+        createdAt: user.createdAt,
+      };
+  
+      res.status(200).json(userProfile);
+    } catch (error) {
+      res.status(500).json({ error: 'Error al obtener el perfil del usuario' });
+    }
+  };

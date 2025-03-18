@@ -36,6 +36,9 @@ export class ApiService {
   likePost(postId: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/likes`, { postId });
   }
+  getProfile(userId: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/profile`, { userId });
+  }
 
   googleAuth(): void {
     window.location.href = `${this.apiUrl}/auth/google`;
