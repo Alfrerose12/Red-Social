@@ -11,39 +11,28 @@ export class AmigosPage {
     slidesPerView: 4.5,
     spaceBetween: 10
   };
-  stories = [
-    { id: 1, user: 'Daniel', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlF-8hJZWN0UkacWF_D4XKV_hmQl0DZJmXaQ&s' },
-    { id: 2, user: 'Karen Garcia', image: 'https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/09/Poses-Perfil-Profesional-Mujeres-ago.-10-2023-1-819x1024.jpg?lossy=1&strip=1&webp=1' },
-    { id: 3, user: 'Alfrerose', image: 'https://labsaenzrenauld.com/wp-content/uploads/2020/10/Perfil-hombre-ba%CC%81sico_738242395.jpg' },
-    { id: 4, user: 'aldahirhernandezz', image: 'https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?b=1&s=612x612&w=0&k=20&c=cgi7LB_rnvAdLeT3cW6uOK27LWXHg65cBkp7rewfde0=' },
-    { id: 5, user: 'lalomontalvo', image: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600' },
-    { id: 6, user: 'giogarrey', image: 'https://media.istockphoto.com/id/1365223878/es/foto/hombre-atractivo-sinti%C3%A9ndose-alegre.jpg?s=1024x1024&w=is&k=20&c=xchV_zmj61fLD2qIRB2E3EF4nnT9saIB1xSLZV4VrW0=' },
-    { id: 7, user: 'diegoarmenta', image: 'https://media.istockphoto.com/id/1399565382/es/foto/joven-empresario-mestizo-feliz-de-pie-con-los-brazos-cruzados-trabajando-solo-en-una-oficina.jpg?b=1&s=612x612&w=0&k=20&c=ZVHkE4INrq7zupzkVLOG-RHa_FSSMVc-5cbRdxIXhLc=' },
-    { id: 8, user: 'rafabarriero', image: 'https://media.istockphoto.com/id/1830126474/es/foto/retrato-de-un-hombre-de-negocios-sentado-en-una-oficina.jpg?s=1024x1024&w=is&k=20&c=fo7ySySL6Cwokw-H1uqNKWy4cIJvzbrxSMNv-_ZtL70=' },
-    { id: 9, user: 'muppet', image: 'https://media.istockphoto.com/id/1433419992/es/foto/joven-con-camisa-azul-casual-y-gafas-sosteniendo-el-tel%C3%A9fono-mirando-a-la-c%C3%A1mara-con-una.jpg?s=1024x1024&w=is&k=20&c=Wcoan0C-gScZrsDOoY753HTVeDh-Y1zoYA2PCQloQ9Q=' },
-    { id: 10, user: 'macacoefc', image: 'https://media.istockphoto.com/id/1372138855/es/foto/alegre-gerente-negro-con-tableta-digital-caminando-por-la-oficina.jpg?s=1024x1024&w=is&k=20&c=raO3QUPWS9zJcUGfuJr8aTeNDkfLQIjU_Hinl2RimYM=' }
-  ];
+  
 
   posts = [
     { 
       id: 1, 
       user: 'Daniel', 
-      userAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlF-8hJZWN0UkacWF_D4XKV_hmQl0DZJmXaQ&s', 
-      content: 'https://cdn.domestika.org/c_fit,dpr_auto,f_auto,q_80,t_base_params,w_820/v1596140821/content-items/005/365/121/IMG-20200726-WA0008-01-original.jpeg?1596140821',
+      userAvatar: 'https://scontent-qro1-1.xx.fbcdn.net/v/t39.30808-6/431867500_1436737523623964_7976501891398235389_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEpxIk1J46SiwvOtOHYkyHLSDp5C_fc9LNIOnkL99z0swmxxXH1BvwllNv1gUQNvqDjAYjnMz2NuMUK-5b9mVd1&_nc_ohc=5B5DIFgEk88Q7kNvgHmq3Ag&_nc_oc=Adhq2DVp8j5tXjBJccwhVr3waPKV2MkDJcyYBGOndWWfmuDFL-nX3nq69w1RRCUtVs8yJUdhh9S_zy5b5aaGLBxA&_nc_zt=23&_nc_ht=scontent-qro1-1.xx&_nc_gid=L11vFi_N8pfnhrbDDk0Q2g&oh=00_AYF437NrQ2xNybVEOn4bP94y5x5k_W597v9NWdoK7x3d3w&oe=67DEF947', 
+      content: 'https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/356408095_101628749655448_7418084051985274865_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHjvb63jPyP-WLRUW9jsSb0ojnMwKo7Um6iOczAqjtSbspTM8PaNQd_3CfqItf_kboQI2Ed0NzShv3eT7A7sGmu&_nc_ohc=roa8p1bO0tQQ7kNvgGLeWGx&_nc_oc=AdhGwUG3aUDKKvAveSIzMtfs1qfiawyUExBDSGbbGS4JMEPXNf_cXL1TApnqWrXAQ5qBcpMs2XvD349XmJBaj31R&_nc_zt=23&_nc_ht=scontent-qro1-2.xx&_nc_gid=yFTrdd7xXYJKqL5ftMDa0w&oh=00_AYHtE6Hkt_8E1Q4ITYNgQSPRk-3nNHSl9Aeio2wVJWHACQ&oe=67DEDD25',
       type: 'image' 
     },
     { 
       id: 2, 
       user: 'Karen Garcia', 
-      userAvatar: 'https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/09/Poses-Perfil-Profesional-Mujeres-ago.-10-2023-1-819x1024.jpg?lossy=1&strip=1&webp=1', 
-      content: 'https://st.depositphotos.com/1370441/4484/i/950/depositphotos_44844973-stock-photo-beautiful-girl-on-the-beach.jpg',
+      userAvatar:'https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/438205687_3749325638689853_6668461089632969725_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF-k0WnzaIr4HBV8odXzRgKvPzA_2d0qOm8_MD_Z3So6SXiev4u4eSvniBvb4_4ovV6eEQdeSTzkqUXzS_M-IZ2&_nc_ohc=jexcdFRBzrwQ7kNvgGthOuX&_nc_oc=Adgg7Se42rgdOkrTcry1GI-RLmULfeJvOHDoAC-MLY9tl45OuoeW4DrPCBpudPAwDReFMCDG5HQhKyefXjfxC12n&_nc_zt=23&_nc_ht=scontent-qro1-2.xx&_nc_gid=nRTH58TLQfGZgGpjBB9fgg&oh=00_AYGey0h7oWKsyJETNvfKuiTsvZEiqqUXTgaz0TDlPQAK9g&oe=67DEDA7E', 
+      content: 'https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/438205687_3749325638689853_6668461089632969725_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF-k0WnzaIr4HBV8odXzRgKvPzA_2d0qOm8_MD_Z3So6SXiev4u4eSvniBvb4_4ovV6eEQdeSTzkqUXzS_M-IZ2&_nc_ohc=jexcdFRBzrwQ7kNvgGthOuX&_nc_oc=Adgg7Se42rgdOkrTcry1GI-RLmULfeJvOHDoAC-MLY9tl45OuoeW4DrPCBpudPAwDReFMCDG5HQhKyefXjfxC12n&_nc_zt=23&_nc_ht=scontent-qro1-2.xx&_nc_gid=nRTH58TLQfGZgGpjBB9fgg&oh=00_AYGey0h7oWKsyJETNvfKuiTsvZEiqqUXTgaz0TDlPQAK9g&oe=67DEDA7E',
       type: 'image'
     },
     { 
       id: 3, 
       user: 'Alfrerose', 
-      userAvatar: 'https://labsaenzrenauld.com/wp-content/uploads/2020/10/Perfil-hombre-ba%CC%81sico_738242395.jpg', 
-      content: 'https://st.depositphotos.com/2306293/2585/i/380/depositphotos_25857677-stock-photo-flip-flops-with-seashells-on.jpg', 
+      userAvatar: 'https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/464615243_1886191385209243_7014231757131260969_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFqrawxkOZ3AhIunq9Hg81-2iKzyz6-KuTaIrPLPr4q5BlWytGwDmSPHhvOZ7Vrwa3PEhVXVl_SSAzCTuazhmfr&_nc_ohc=sxgvqbJ2n1gQ7kNvgEV3KUu&_nc_oc=AdiQeOlPJJzzhW75nsGDEfvUpn6gUm9YG8mRzR09OSNkPNtwQeXyF8exJzsq3M16dLAdM5SllMU8Yqv8Upo2bPYG&_nc_zt=23&_nc_ht=scontent-qro1-2.xx&_nc_gid=vYnTM16GfDECzwm8YXJWxw&oh=00_AYGGgrB9XYkW4PMZjr4H3LV9kCcZJZ659JQ_uhuB8CiTtg&oe=67DEDEAE', 
+      content: 'https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/464615243_1886191385209243_7014231757131260969_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFqrawxkOZ3AhIunq9Hg81-2iKzyz6-KuTaIrPLPr4q5BlWytGwDmSPHhvOZ7Vrwa3PEhVXVl_SSAzCTuazhmfr&_nc_ohc=sxgvqbJ2n1gQ7kNvgEV3KUu&_nc_oc=AdiQeOlPJJzzhW75nsGDEfvUpn6gUm9YG8mRzR09OSNkPNtwQeXyF8exJzsq3M16dLAdM5SllMU8Yqv8Upo2bPYG&_nc_zt=23&_nc_ht=scontent-qro1-2.xx&_nc_gid=vYnTM16GfDECzwm8YXJWxw&oh=00_AYGGgrB9XYkW4PMZjr4H3LV9kCcZJZ659JQ_uhuB8CiTtg&oe=67DEDEAE', 
       type: 'image' 
     }
   ];

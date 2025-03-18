@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title class="header-title">
-      Facebook
+      Facebook 2.0
     </ion-title>
     <ion-buttons slot="end">
       <ion-button>
@@ -12,11 +12,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-slides [options]="slideOpts" class="stories-container">
-    <ion-slide *ngFor="let story of stories">
-      <app-history [story]="story"></app-history>
-    </ion-slide>
-  </ion-slides>
 
   <app-layout>
     <ion-list>
