@@ -1,36 +1,48 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Iniciar sesión</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Inicio de Sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <img class="icon" src="assets/icon/graphic2.svg" alt="">
-  <form autocomplete="off" (submit)="doLogin()">
-    <ion-item>
-      <ion-label position="stacked">Correo electrónico <span class="text-danger">*</span></ion-label>
-      <ion-input type="text" [(ngModel)]="email" name="email" required="true"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Contraseña <span class="text-danger">*</span></ion-label>
-      <ion-input [(ngModel)]="password" type="password" name="password" required="true"></ion-input>
-    </ion-item>
-    <ion-button class="ion-margin-top" type="submit" expand="block">Entrar</ion-button>
-  </form>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="3">
-        <ion-button class="google" (click)="loginGoogle()">
-          <ion-icon name="logo-google"></ion-icon>
-        </ion-button>
-        <ion-col size="3">
-          <ion-button class="facebook" (click)="loginFacebook()">
-            <ion-icon name="logo-facebook"></ion-icon>
-          </ion-button>
-        </ion-col>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <div class="ion-text-center ion-margin-top"></div>
-  <a routerLink="/registro"><small>Olvide mi contraseña</small></a>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="login-container">
+
+    <ion-list lines="none">
+
+      <ion-item class="ion-margin-bottom">
+        <ion-input
+          label="Correo"
+          labelPlacement="floating"
+          type="email"
+          placeholder="Ingresa tu correo"
+          required
+        ></ion-input>
+        <ion-text slot="end" color="danger">*</ion-text>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-input
+          label="Contraseña"
+          labelPlacement="floating"
+          type="password"
+          placeholder="Ingresa tu contraseña"
+          required
+        ></ion-input>
+        <ion-text slot="end" color="danger">*</ion-text>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" (click)="sesion()" class="ion-margin-bottom">
+      Inicia Sesión
+    </ion-button>
+
+    <ion-button expand="block" color="light" (click)="sesionGoogle()">
+      <ion-icon slot="start" name="logo-google"></ion-icon>
+      Inicia Sesión con Google
+    </ion-button>
+
+    <ion-text class="ion-text-center ion-margin-top">
+      <p>¿No tienes cuenta? <a href="/registro">Regístrate</a></p>
+    </ion-text>
+  </div>
 </ion-content>

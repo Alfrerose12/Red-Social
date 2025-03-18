@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,15 +7,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
   standalone: false
 })
-
 export class LoginPage implements OnInit {
-  email: string = '';
-  password: string = '';
-  constructor(private apiService: ApiService, private router: Router) { }
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
   }
-  loginFacebook() {
-    alert('funciona')
-}  
+
+  sesion() {
+    
+  }
+
+  sesionGoogle() {
+    window.location.href = 'http://localhost:3003/api/auth/google';
+  }
+
 }

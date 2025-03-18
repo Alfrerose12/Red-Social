@@ -32,7 +32,7 @@ router.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {
-    res.json({ message: 'Inicio de sesión con Google exitoso', user: req.user });
+    res.redirect('http://localhost:8100/tabs/inicio');
   }
 );
 
