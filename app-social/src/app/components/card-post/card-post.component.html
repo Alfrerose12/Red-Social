@@ -1,0 +1,36 @@
+<ion-card>
+
+  <ion-card-header>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img [src]="post.userAvatar" alt="User Avatar">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ post.user }}</h2>
+    </ion-label>
+  </ion-item>
+</ion-card-header>
+
+
+  <ion-card-content>
+    <img [src]="post.content" alt="Post image" />
+  </ion-card-content>
+
+  <ion-buttons class="post-actions">
+    <ion-button>
+      <ion-icon name="heart-outline"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon name="chatbubble-outline"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon name="paper-plane-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <ion-card-content>
+    Buenos días por la mañana 
+  </ion-card-content>
+
+
+</ion-card>
