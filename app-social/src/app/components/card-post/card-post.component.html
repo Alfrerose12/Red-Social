@@ -6,20 +6,21 @@
       <img [src]="post.userAvatar" alt="User Avatar">
     </ion-avatar>
     <ion-label>
-      <h2>{{ post.user }}</h2>
+      <h2 style="font-weight: bold;">{{ post.user }}</h2>
+      <h2 style="font-size: small; color: gray;">Amigos en comun (10)</h2>
+
     </ion-label>
+
+    
+    <ion-card-content>
+      <ion-button style="color: white;">Aceptar</ion-button>
+      <ion-button color="medium" style="color: white;">Eliminar</ion-button>
+  </ion-card-content>
   </ion-item>
 </ion-card-header>
 
 
-  <ion-card-content>
-    <img [src]="post.content" alt="Post image" />
-  </ion-card-content>
-
-  <ion-card-content>
-    <ion-button style="font-family: 'Black', sans-serif;">Agregar</ion-button>
-    <ion-button style="font-family: 'Black', sans-serif;">Rechazar</ion-button>
-  </ion-card-content>
+ 
 
 
 </ion-card>
