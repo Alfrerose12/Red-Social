@@ -32,7 +32,7 @@ router.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {
-    res.redirect('http://localhost:8100/tabs/inicio');
+    res.redirect('https://localhost:8100/tabs/inicio');
   }
 );
 

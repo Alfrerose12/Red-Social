@@ -21,4 +21,24 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/${endpoint}`, credentials);
   }
 
+  createPost(postData: {content: string}): Observable<any> {
+    return this.http.post(`${this.apiUrl}/posts`, postData);
+  }
+
+  deletePost(postId: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/posts/${postId}`);
+  }
+
+  addComment(commentData: {postId: string; text: string}): Observable<any> {
+    return this.http.post(`${this.apiUrl}/comments`, commentData);
+  }
+
+  likePost(postId: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/likes`, { postId });
+  }
+
+  googleAuth(): void {
+    window.location.href = `${this.apiUrl}/auth/google`;
+  }
+
 }
