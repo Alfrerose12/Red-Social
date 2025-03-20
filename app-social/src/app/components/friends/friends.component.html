@@ -1,0 +1,22 @@
+<ion-card>
+
+  <ion-card-header>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img [src]="post.userAvatar" alt="User Avatar">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ post.user }}</h2>
+      <h2>Amigos en común ({{ post.mutualFriends}})</h2>
+
+    </ion-label>
+
+    
+    <ion-card-content>
+      <ion-button (click)="onAccept()">Aceptar</ion-button>
+      <ion-button color="medium" (click)="onRemove()">Eliminar</ion-button>
+  </ion-card-content>
+  </ion-item>
+</ion-card-header>
+
+</ion-card>

@@ -14,8 +14,13 @@
 <ion-content [fullscreen]="true">
 
   <app-layout>
-    <ion-list>
-      <app-card-post *ngFor="let post of posts" [post]="post"></app-card-post>
+    <ion-list class="post-list">
+      <app-friends
+      *ngFor="let friend of friends"
+      [post]="friend"
+      (acceptFriend)="handleAcceptFriend($event)"
+      (removeFriend)="handleRemoveFriend($event)">
+    </app-friends>
     </ion-list>
   </app-layout>
 </ion-content>

@@ -15,7 +15,7 @@ import { ComponentsModule } from '../components/components.module';
     FormsModule,
     IonicModule,
     AmigosPageRoutingModule,
-    ComponentsModule 
+    ComponentsModule
   ],
   declarations: [AmigosPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
