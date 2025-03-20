@@ -1,7 +1,8 @@
-const User = require("../models/userModel");
-const bcrypt = require("bcryptjs");
+const User = require('../models/userModel');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-
+// Registrar usuario
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -36,45 +37,47 @@ exports.register = async (req, res) => {
   }
 };
 
-  exports.login = async (req, res) => {
-    try {
-      const { email, password } = req.body;
-  
-      // Verificar si el usuario existe
-      const user = await User.findOne({ email });
-      if (!user) {
-        return res.status(404).json({ message: 'Usuario no encontrado' });
-      }
-  
-      // Verificar la contraseña
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-      if (!isPasswordValid) {
-        return res.status(401).json({ message: 'Contraseña incorrecta' });
-      }
-  
-      // Enviar respuesta con los datos del usuario
-      res.status(200).json({ message: 'Inicio de sesión exitoso', user });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  };
+// Iniciar sesión
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  exports.getProfile = async (req, res) => {
+    // Verificar si el usuario existe
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    // Verificar la contraseña
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: 'Contraseña incorrecta' });
+    }
+
+    // Generar token JWT
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET,{ expiresIn: '1h' });
+    res.json({ message: 'Inicio de sesión exitoso',
+        user: {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+        } ,token 
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Obtener perfil del usuario
+exports.getProfile = async (req, res) => {
     try {
-      const { userId } = req.body; // Recibe el userId desde el cuerpo de la solicitud
-      if (!userId) {
-        return res.status(400).json({ message: 'Se requiere el ID del usuario' });
-      }
-  
-      // Busca al usuario en la base de datos
-      const user = await User.findById(userId).select('-password'); // Excluye la contraseña
+      const user = await User.findById(req.user.id).select('-password'); 
       if (!user) {
         return res.status(404).json({ message: 'Usuario no encontrado' });
       }
   
-      // Mapea _id a id antes de enviar la respuesta
       const userProfile = {
-        id: user._id, // Mapea _id a id
+        id: user._id,
         name: user.name,
         email: user.email,
         profilePicture: user.profilePicture,

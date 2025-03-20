@@ -23,7 +23,6 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Inicializar FacebookLogin en Capacitor
     FacebookLogin.initialize({ appId: '1174025107505497' });
   }
 
@@ -37,17 +36,18 @@ export class LoginPage implements OnInit {
       (response: any) => {
         console.log('Inicio de sesión exitoso:', response);
   
-        // Guarda el userId en localStorage
-        localStorage.setItem('userId', response.user._id); // Asegúrate de usar _id
+        localStorage.setItem('token', response.token); 
+        localStorage.setItem('userId', response.user.id); 
   
         this.mostrarAlerta('Éxito', 'Iniciaste sesión correctamente');
-        this.navController.navigateForward('/tabs/inicio');
+        this.navController.navigateForward('/tabs/inicio'); 
       },
       (error) => {
         console.error('Error al iniciar sesión:', error);
         this.mostrarAlerta('Error', 'Error al iniciar sesión');
       }
     );
+  
   }
 
   async sesionFacebook() {

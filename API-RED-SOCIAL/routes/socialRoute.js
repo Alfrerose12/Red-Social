@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
+const authMiddleware = require('../middlewares/authMiddleware');
 
 const userController = require("../controllers/userController");
 const postController = require("../controllers/postController");
@@ -10,7 +11,7 @@ const likeController = require("../controllers/likeController");
 // Rutas de Usuario (Autenticación y Perfil)
 router.post("/register", userController.register);
 router.post("/login", userController.login);
-router.post('/profile', userController.getProfile);
+router.get('/profile', authMiddleware, userController.getProfile);
 
 // Rutas de Publicaciones
 router.post("/posts", postController.createPost);

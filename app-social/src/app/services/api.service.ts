@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -36,9 +38,23 @@ export class ApiService {
   likePost(postId: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/likes`, { postId });
   }
-  getProfile(userId: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/profile`, { userId });
+  getProfile(): Observable<any> {
+    const token = localStorage.getItem('token'); 
+    console.log('Token enviado:', token);
+  
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}` 
+    });
+  
+    return this.http.get(`${this.apiUrl}/profile`, { headers }).pipe(
+      tap((response) => console.log('Respuesta del backend:', response)), 
+      catchError((error) => {
+        console.error('Error al obtener el perfil:', error); 
+        return throwError(error);
+      })
+    );
   }
+
 
   googleAuth(): void {
     window.location.href = `${this.apiUrl}/auth/google`;
