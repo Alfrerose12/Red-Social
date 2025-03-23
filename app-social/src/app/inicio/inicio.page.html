@@ -1,13 +1,52 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>inicio</ion-title>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon name="logo-facebook" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-searchbar placeholder="Buscar"></ion-searchbar>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="chatbubble-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-text-center">
+  <div class="feed-container">
+    <ion-list>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://th.bing.com/th/id/R.b51d67c07e100f6c9caf59dca4f7ee51?rik=t8o9fnO2Q0rxJw&riu=http%3a%2f%2f1.bp.blogspot.com%2f-lkT0yAUnr84%2fVOznUApyKCI%2fAAAAAAAAO6s%2fQGI24L0kSzc%2fs1600%2f5.jpg&ehk=ql4t1F5SIf4UVY6uyIhyqdq9eoR7%2f7F8TFAK7FALqS4%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" />
+        </ion-avatar>
+        <ion-label>
+          <h2>Alberto Romero</h2>
+          <p>Hace 5 min</p>
+        </ion-label>
+      </ion-item>
+      <ion-card>
+        <ion-card-content class="ion-text-left">
+          <p>De las mejores fotos que he tomado</p>
+        </ion-card-content>
+        <img src="https://th.bing.com/th/id/OIP.PFndj5fIuUEN-TSzngA4aQHaHa?rs=1&pid=ImgDetMain" />
+        <ion-row class="ion-justify-content-around">
+          <ion-button fill="clear">
+            <ion-icon name="thumbs-up-outline"></ion-icon>
+            <ion-label>Me gusta</ion-label>
+          </ion-button>
+          <ion-button fill="clear">
+            <ion-icon name="chatbubble-outline"></ion-icon>
+            <ion-label>Comentar</ion-label>
+          </ion-button>
+        </ion-row>
+      </ion-card>
+    </ion-list>
+  </div>
 </ion-content>
