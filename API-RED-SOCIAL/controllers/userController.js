@@ -89,3 +89,36 @@ exports.getProfile = async (req, res) => {
       res.status(500).json({ error: 'Error al obtener el perfil del usuario' });
     }
   };
+
+  // Editar datos del usuario
+exports.updateProfile = async (req, res) => {
+  try {
+    const { name, email, profilePicture } = req.body;
+
+    // Validar formato de email si se proporciona
+    if (email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return res.status(400).json({ message: 'Por favor ingrese un email válido' });
+      }
+    }
+
+    // Actualizar los datos del usuario
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user.id, // ID del usuario autenticado
+      { name, email, profilePicture }, // Campos a actualizar
+      { new: true, runValidators: true } // Retornar el usuario actualizado y validar los datos
+    ).select('-password'); // Excluir la contraseña del resultado
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    res.status(200).json({
+      message: 'Perfil actualizado exitosamente',
+      user: updatedUser,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al actualizar el perfil del usuario' });
+  }
+};
