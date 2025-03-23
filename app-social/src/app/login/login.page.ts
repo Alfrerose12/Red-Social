@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
 import { Router } from '@angular/router';
 
@@ -19,8 +19,9 @@ export class LoginPage implements OnInit {
     private apiService: ApiService,
     private navController: NavController,
     private alertController: AlertController,
-    private router: Router
-  ) {}
+    private router: Router,
+    private loadingController: LoadingController
+  ) { }
 
   ngOnInit() {
     FacebookLogin.initialize({ appId: '1174025107505497' });
@@ -31,23 +32,34 @@ export class LoginPage implements OnInit {
       this.mostrarAlerta('Error', 'Todos los campos son obligatorios');
       return;
     }
-  
+
+    const loading = await this.loadingController.create({
+      message: 'Iniciando sesión...',
+      spinner: 'crescent'
+    });
+    await loading.present();
+
     this.apiService.login({ email: this.email, password: this.password }).subscribe(
-      (response: any) => {
+      async (response: any) => {
         console.log('Inicio de sesión exitoso:', response);
-  
-        localStorage.setItem('token', response.token); 
-        localStorage.setItem('userId', response.user.id); 
-  
-        this.mostrarAlerta('Éxito', 'Iniciaste sesión correctamente');
-        this.navController.navigateForward('/tabs/inicio'); 
+
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.user.id);
+
+        setTimeout(async () => {
+          await loading.dismiss();
+          this.mostrarAlerta('Éxito', 'Iniciaste sesión correctamente');
+          this.navController.navigateForward('/tabs/inicio');
+        }, 1000);
       },
-      (error) => {
+
+      async (error) => {
         console.error('Error al iniciar sesión:', error);
+        await loading.dismiss();
         this.mostrarAlerta('Error', 'Error al iniciar sesión');
       }
     );
-  
+
   }
 
   async sesionFacebook() {
