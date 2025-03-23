@@ -55,6 +55,22 @@ export class ApiService {
     );
   }
 
+  updateProfile(profileData: { name?: string; email?: string; profilePicture?: string }): Observable<any> {
+    const token = localStorage.getItem('token'); // Obtener el token del almacenamiento local
+  
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}` // Incluir el token en los encabezados
+    });
+  
+    return this.http.put(`${this.apiUrl}/profile`, profileData, { headers }).pipe(
+      tap((response) => console.log('Perfil actualizado:', response)), // Log para depuración
+      catchError((error) => {
+        console.error('Error al actualizar el perfil:', error); // Log de errores
+        return throwError(error); // Manejo de errores
+      })
+    );
+  }
+
 
   googleAuth(): void {
     window.location.href = `${this.apiUrl}/auth/google`;

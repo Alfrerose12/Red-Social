@@ -22,11 +22,34 @@
       </ion-card-header>
     </ion-card>
 
-    <ion-button expand="block" color="secondary">
+    <form *ngIf="isEditing" (ngSubmit)="guardarCambios()">
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input [(ngModel)]="userProfile.name" name="name" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Correo Electrónico</ion-label>
+        <ion-input [(ngModel)]="userProfile.email" name="email" type="email" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Foto de Perfil (URL)</ion-label>
+        <ion-input [(ngModel)]="userProfile.profilePicture" name="profilePicture"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" color="secondary" type="submit">
+        <ion-icon slot="start" name="save-outline"></ion-icon>
+        Guardar Cambios
+      </ion-button>
+    </form>
+
+    <ion-button *ngIf="!isEditing" expand="block" color="secondary" (click)="editarPerfil()">
       <ion-icon slot="start" name="create-outline"></ion-icon>
       Editar Perfil
     </ion-button>
   </div>
+  
   <ion-button expand="block" color="danger" (click)="cerrarSesion()">
     <ion-icon slot="start" name="log-out-outline"></ion-icon>
     Cerrar Sesión
