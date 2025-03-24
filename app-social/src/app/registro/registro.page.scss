@@ -1,28 +1,43 @@
 .register-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding-top: 50px;
-  }
-  
-  ion-item {
-    --padding-start: 0;
-    --inner-padding-end: 0;
-    --background: transparent;
-  }
-  
-  ion-button {
-    --border-radius: 8px;
-    margin-top: 16px;
-  }
-  
-  ion-text {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  a {
-    text-decoration: none;
-    color: var(--ion-color-primary);
+  max-width: 400px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.register-header {
+  margin-bottom: 24px;
+
+  h1 {
+    font-size: 24px;
     font-weight: bold;
+    color: var(--ion-color-primary);
+    margin: 0;
   }
+
+  p {
+    font-size: 14px;
+    color: var(--ion-color-medium);
+    margin: 8px 0 0;
+  }
+}
+
+/* Estilo del formulario */
+.form-container {
+  background: var(--ion-color-light);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-item {
+  --background: transparent;
+  --border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón principal */
+.custom-button {
+  --border-radius: 12px;
+  margin-top: 16px;
+}

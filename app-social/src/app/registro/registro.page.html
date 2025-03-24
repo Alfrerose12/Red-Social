@@ -1,15 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="ion-text-center">
-    <ion-title>Registro</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header [translucent]="true"></ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="register-container">
 
-    <ion-list lines="none">
+    <div class="register-header ion-text-center">
+      <h1>Registro</h1>
+      <p>Crea una cuenta para comenzar</p>
+    </div>
 
-      <ion-item class="ion-margin-bottom">
+    <ion-list lines="none" class="form-container">
+      <ion-item class="custom-item">
         <ion-input
           label="Nombre completo"
           labelPlacement="floating"
@@ -21,32 +21,45 @@
         <ion-text slot="end" color="danger">*</ion-text>
       </ion-item>
 
-      <ion-item class="ion-margin-bottom">
+      <ion-item class="custom-item">
         <ion-input
           label="Correo"
           labelPlacement="floating"
           type="email"
           placeholder="Ingresa tu correo"
-          required
           [(ngModel)]="email"
+          required
         ></ion-input>
         <ion-text slot="end" color="danger">*</ion-text>
       </ion-item>
 
-      <ion-item class="ion-margin-bottom">
+      <ion-item class="custom-item">
         <ion-input
           label="Contraseña"
           labelPlacement="floating"
           type="password"
           placeholder="Ingresa tu contraseña"
-          required
           [(ngModel)]="password"
+          required
         ></ion-input>
         <ion-text slot="end" color="danger">*</ion-text>
       </ion-item>
+
+      <ion-item class="custom-item">
+        <ion-input
+          label="Confirmar Contraseña"
+          labelPlacement="floating"
+          type="password"
+          placeholder="Confirma tu contraseña"
+          [(ngModel)]="confirmPassword"
+          required
+        ></ion-input>
+        <ion-text slot="end" color="danger">*</ion-text>
+      </ion-item>
+      
     </ion-list>
 
-    <ion-button expand="block" (click)="registro()" class="ion-margin-bottom">
+    <ion-button expand="block" (click)="registro()" class="custom-button">
       Registrarse
     </ion-button>
 

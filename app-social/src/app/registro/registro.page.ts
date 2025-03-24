@@ -13,6 +13,7 @@ export class RegistroPage implements OnInit {
   name: string = '';
   email: string = '';
   password: string = '';
+  confirmPassword: string = '';
 
   constructor(private apiService: ApiService, private navController: NavController, private alertController: AlertController) { }
 
@@ -23,6 +24,11 @@ export class RegistroPage implements OnInit {
 
     if (!this.name || !this.email || !this.password) {
       this.mostrarAlerta('Error', 'Todos los campos son obligatorios');
+      return;
+    }
+
+    if(this.password !== this.confirmPassword) {
+      this.mostrarAlerta('Error', 'Las contraseñas no coinciden');
       return;
     }
 
