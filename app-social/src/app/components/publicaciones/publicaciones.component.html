@@ -1,17 +1,16 @@
-<ion-card>
-  <ion-card-header>
-  <ion-item lines="none">
-    <ion-avatar slot="start">
-      <img [src]="post.userAvatar" alt="User Avatar">
-    </ion-avatar>
-    <ion-label>
-      <h2>{{ post.user }}</h2>
-      <h2>Amigos en común (10)</h2>
-    </ion-label>
-    <ion-card-content>
-      <ion-button>Aceptar</ion-button>
-      <ion-button color="medium">Eliminar</ion-button>
-  </ion-card-content>
-  </ion-item>
-</ion-card-header>
-</ion-card>
+<ion-card> 
+    <ion-card-content class="ion-text-left">
+      <p>{{ post.content }}</p>
+    </ion-card-content>
+    <img [src]="post.image" alt="Imagen del post" />
+    <ion-row class="ion-justify-content-around">
+      <ion-button fill="clear">
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+        <ion-label>Me gusta</ion-label>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon name="chatbubble-outline"></ion-icon>
+        <ion-label>Comentar</ion-label>
+      </ion-button>
+    </ion-row>
+  </ion-card>  
