@@ -22,9 +22,7 @@
 <ion-content [fullscreen]="true" class="ion-text-center">
   <div class="feed-container">
     <ion-list>
-      <!-- Únicamente un *ngFor para recorrer los posts -->
       <ng-container *ngFor="let post of posts">
-        <!-- Información del usuario -->
         <ion-item>
           <ion-avatar slot="start">
             <img [src]="post.avatar" />
@@ -33,9 +31,12 @@
             <h2>{{ post.title }}</h2>
             <p>{{ post.subtitle }}</p>
           </ion-label>
-        </ion-item>
-        
-        <!-- Componente para las publicaciones -->
+          <ion-buttons slot="end">
+            <ion-button>
+              <ion-icon name="ellipsis-horizontal"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>        
         <app-publicaciones [post]="post"></app-publicaciones>
       </ng-container>
     </ion-list>
