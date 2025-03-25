@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { NotificacionesPageRoutingModule } from './notificaciones-routing.module';
-
-import { NotificacionesPage } from './notificaciones.page';
+import { NotificacionesPage } from './notificaciones.page'; // Importar el componente
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotificacionesPageRoutingModule
-  ],
-  declarations: [NotificacionesPage]
+    NotificacionesPageRoutingModule,
+    NotificacionesPage // 👈 Se importa en lugar de declararlo
+  ]
 })
 export class NotificacionesPageModule {}

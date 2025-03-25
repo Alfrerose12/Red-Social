@@ -22,8 +22,8 @@ const routes: Routes = [
     path: 'notificaciones',
     loadChildren: () => import('./notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule)
   }
-
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

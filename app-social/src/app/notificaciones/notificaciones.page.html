@@ -1,13 +1,35 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>notificaciones</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notificaciones</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">notificaciones</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list class="lista-notificaciones">
+    <ion-item *ngFor="let notificacion of notificaciones" class="notificacion">
+      <div class="contenedor-notificacion">
+        <!-- Avatar con el icono de like -->
+        <div class="avatar-container">
+          <ion-avatar class="avatar">
+            <img [src]="notificacion.imagen" />
+            <ion-icon *ngIf="notificacion.leGusto" name="heart" class="like-icon"></ion-icon>
+          </ion-avatar>
+        </div>
+
+        <!-- Mensaje y fecha -->
+        <div class="info-notificacion">
+          <h2 [ngClass]="{'negrita': !notificacion.leido}" class="mensaje">{{ notificacion.mensaje }}</h2>
+          <p class="fecha-notificacion">{{ tiempoTranscurrido(notificacion.fecha) }}</p>
+        </div>
+
+        <!-- Botón de eliminar -->
+        <ion-button fill="clear" color="danger" class="eliminar-btn" (click)="eliminarNotificacion(notificacion.id)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>

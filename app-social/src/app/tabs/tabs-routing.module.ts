@@ -9,15 +9,19 @@ const routes: Routes = [
     children: [
       {
         path: 'inicio',
-        loadChildren: () => import('../inicio/inicio.module').then( m => m.InicioPageModule)
+        loadChildren: () => import('../inicio/inicio.module').then(m => m.InicioPageModule)
       },
       {
         path: 'amigos',
-        loadChildren: () => import('../amigos/amigos.module').then( m => m.AmigosPageModule)
+        loadChildren: () => import('../amigos/amigos.module').then(m => m.AmigosPageModule)
       },
       {
         path: 'ajustes',
-        loadChildren: () => import('../ajustes/ajustes.module').then( m => m.AjustesPageModule)
+        loadChildren: () => import('../ajustes/ajustes.module').then(m => m.AjustesPageModule)
+      },
+      {
+        path: 'notificaciones',  // Esta ruta está bien configurada aquí
+        loadChildren: () => import('../notificaciones/notificaciones.module').then(m => m.NotificacionesPageModule)
       },
       {
         path: '',
