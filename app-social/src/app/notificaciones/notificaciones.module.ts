@@ -11,7 +11,7 @@ import { NotificacionesPage } from './notificaciones.page'; // Importar el compo
     FormsModule,
     IonicModule,
     NotificacionesPageRoutingModule,
-    NotificacionesPage // 👈 Se importa en lugar de declararlo
+    NotificacionesPage 
   ]
 })
 export class NotificacionesPageModule {}

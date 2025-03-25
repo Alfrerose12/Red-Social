@@ -1,23 +1,30 @@
-
 .lista-notificaciones {
     padding: 0;
   }
-  
   
   .contenedor-notificacion {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, border 0.3s ease;
+    margin-bottom: 10px;
   }
   
- 
+  /* Efecto hover para destacar la notificación */
+  .contenedor-notificacion:hover {
+    background: #f5f5f5;
+    border-color: #444;
+  }
+  
+  /* Avatar y contenedor del icono */
   .avatar-container {
     position: relative;
     margin-right: 10px;
   }
-  
   
   .avatar {
     width: 50px;
@@ -25,18 +32,27 @@
     border-radius: 50%;
   }
   
-  .like-icon {
+  /* ESTILOS SOLO PARA EL CÍRCULO DONDE ESTÁ EL ICONO */
+  .icono-notificacion {
     position: absolute;
     bottom: 0;
     right: 0;
     font-size: 18px;
-    color: red;
-    background-color: white;
+    color: white;
     border-radius: 50%;
-    padding: 3px;
+    padding: 5px;
   }
   
-
+  /* Rojo SOLO para el círculo del icono de corazón */
+  .icono-notificacion.like {
+    background-color: red;
+  }
+  
+  /* Verde SOLO para el círculo del icono de comentario */
+  .icono-notificacion.comentario {
+    background-color: green;
+  }
+  
   .info-notificacion {
     flex-grow: 1;
     display: flex;
@@ -44,19 +60,16 @@
     justify-content: center;
   }
   
- 
   .mensaje {
     font-size: 14px;
     margin: 0;
     line-height: 1.2;
   }
   
-  
   .negrita {
     font-weight: bold;
   }
   
-
   .fecha-notificacion {
     font-size: 12px;
     color: gray;
