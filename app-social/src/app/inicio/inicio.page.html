@@ -5,9 +5,10 @@
         <ion-icon name="logo-facebook" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>
-      <ion-searchbar placeholder="Buscar"></ion-searchbar>
-    </ion-title>
+
+    <!-- Colocamos el ion-searchbar fuera de ion-title para evitar posibles errores -->
+    <ion-searchbar placeholder="Buscar"></ion-searchbar> 
+
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon name="chatbubble-outline"></ion-icon>
@@ -19,23 +20,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-text-center">
+<ion-content [fullscreen]="true" class="text-center">
   <div class="feed-container">
     <ion-list>
-     
+      <!-- *ngFor para recorrer los posts -->
       <ng-container *ngFor="let post of posts">
-       
+        <!-- Información del usuario -->
         <ion-item>
           <ion-avatar slot="start">
-            <img [src]="post.avatar" />
+            <!-- Evitamos errores si post.avatar es null o undefined -->
+            <img [src]="post.avatar || 'assets/img/default-avatar.jpg'" />
           </ion-avatar>
           <ion-label>
             <h2>{{ post.title }}</h2>
             <p>{{ post.subtitle }}</p>
           </ion-label>
-        </ion-item>
-        
-        <!-- Componente para las publicaciones -->
+          <ion-buttons slot="end">
+            <ion-button>
+              <ion-icon name="ellipsis-horizontal"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>        
+
+        <!-- Componente de publicaciones (asegúrate de que existe y tiene @Input() post) -->
         <app-publicaciones [post]="post"></app-publicaciones>
       </ng-container>
     </ion-list>
