@@ -65,8 +65,8 @@ export class InicioPage implements OnInit {
 
   currentUser = {
     _id: '67eb701fb7d4213f1ccf5f58', 
-    name: 'Diego Sanchez Sanchez',
-    profilePicture: 'https://i.pinimg.com/736x/c5/96/fd/c596fdc7c9e962ec84bfd3af4c28c471.jpg',
+    name: 'Alfredo Rosas Espinosa',
+    profilePicture: 'https://th.bing.com/th/id/OIP.PFndj5fIuUEN-TSzngA4aQHaHa?rs=1&pid=ImgDetMain',
   };
   isAdmin: boolean = false;
   nuevaPublicacion = { content: '', image: '' };
