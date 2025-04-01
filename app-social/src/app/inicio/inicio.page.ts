@@ -10,7 +10,7 @@ import { ApiService } from '../services/api.service';
 export class InicioPage implements OnInit {
   posts: any[] = [
     {
-      _id: '64b7f9f1c2a4d2e4b8f9a123', 
+      _id: '64b7f9f1c2a4d2e4b8f9a456', 
       title: 'Alberto Romero',
       subtitle: 'Hace 5 minutos',
       profilePicture:'https://th.bing.com/th/id/OIP.PFndj5fIuUEN-TSzngA4aQHaHa?rs=1&pid=ImgDetMain',
