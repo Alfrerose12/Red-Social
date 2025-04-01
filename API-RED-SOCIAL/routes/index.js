@@ -134,7 +134,9 @@ router.put('/profile', authMiddleware, userController.updateProfile);
  *       400:
  *         description: Datos inválidos
  */
-router.post("/posts", postController.createPost);
+
+router.post("/posts", authMiddleware, postController.createPost); // Protege la ruta con authMiddleware
+
 
 /**
  * @swagger
@@ -146,6 +148,7 @@ router.post("/posts", postController.createPost);
  *       200:
  *         description: Listado de publicaciones
  */
+// Rutas de Publicaciones
 router.get("/posts", postController.getPosts);
 
 /**
@@ -167,9 +170,10 @@ router.get("/posts", postController.getPosts);
  *       404:
  *         description: Publicación no encontrada
  */
-router.delete("/posts/:id", postController.deletePost);
 
-// Rutas de Comentarios
+router.delete("/posts/:id", authMiddleware, postController.deletePost); // Protege la eliminación de publicaciones
+
+
 /**
  * @swagger
  * /comments:
@@ -193,7 +197,7 @@ router.delete("/posts/:id", postController.deletePost);
  *       400:
  *         description: Datos inválidos
  */
-router.post("/comments", commentController.addComment);
+router.post('/comments', authMiddleware, commentController.addComment);
 
 /**
  * @swagger
@@ -212,8 +216,7 @@ router.post("/comments", commentController.addComment);
  *       200:
  *         description: Listado de comentarios
  */
-router.get("/comments/:postId", commentController.getCommentsByPost);
-
+router.get('/comments/:postId', commentController.getCommentsByPost);
 // Rutas de Likes
 /**
  * @swagger

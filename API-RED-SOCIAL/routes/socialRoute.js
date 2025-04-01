@@ -15,9 +15,9 @@ router.get('/profile', authMiddleware, userController.getProfile);
 router.put('/profile', authMiddleware, userController.updateProfile); 
 
 // Rutas de Publicaciones
-router.post("/posts", postController.createPost);
+router.post("/posts", authMiddleware, postController.createPost); // Protege la ruta con authMiddleware
 router.get("/posts", postController.getPosts);
-router.delete("/posts/:id", postController.deletePost);
+router.delete("/posts/:id", authMiddleware, postController.deletePost); // Protege la eliminación de publicaciones
 
 // Rutas de Comentarios
 router.post("/comments", commentController.addComment);

@@ -5,10 +5,7 @@
         <ion-icon name="logo-facebook" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
-
-    <!-- Colocamos el ion-searchbar fuera de ion-title para evitar posibles errores -->
-    <ion-searchbar placeholder="Buscar"></ion-searchbar> 
-
+    <ion-searchbar placeholder="Buscar"></ion-searchbar>
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon name="chatbubble-outline"></ion-icon>
@@ -21,29 +18,73 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="text-center">
-  <div class="feed-container">
-    <ion-list>
-      <!-- *ngFor para recorrer los posts -->
-      <ng-container *ngFor="let post of posts">
-        <!-- Información del usuario -->
-        <ion-item>
-          <ion-avatar slot="start">
-            <!-- Evitamos errores si post.avatar es null o undefined -->
-            <img [src]="post.avatar || 'assets/img/default-avatar.jpg'" />
-          </ion-avatar>
-          <ion-label>
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.subtitle }}</p>
-          </ion-label>
-          <ion-buttons slot="end">
-            <ion-button>
-              <ion-icon name="ellipsis-horizontal"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-item>        
+  <ion-card class="create-post-card">
+    <ion-card-header>
+      <ion-card-title>Crear Publicación</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-textarea
+        placeholder="¿Qué estás pensando?"
+        [(ngModel)]="nuevaPublicacion.content"
+        class="create-post-textarea"
+      ></ion-textarea>
+      <ion-input
+        placeholder="URL de la imagen (opcional)"
+        [(ngModel)]="nuevaPublicacion.image"
+        class="create-post-input"
+      ></ion-input>
+      <ion-button expand="block" color="primary" (click)="crearPublicacion()">
+        Publicar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 
-        <!-- Componente de publicaciones (asegúrate de que existe y tiene @Input() post) -->
-        <app-publicaciones [post]="post"></app-publicaciones>
+  <div class="feed-container">
+    <ion-list class="post-list">
+      <ng-container *ngFor="let post of posts; let i = index">
+        <ion-card class="post-card">
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img [src]="post.user?.profilePicture || post.avatar || 'assets/img/default-avatar.jpg'" alt="Avatar del usuario" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ post.title || post.user?.name || 'Usuario desconocido' }}</h2>
+              <p>{{ post.subtitle || post.content }}</p>
+            </ion-label>
+            <ion-buttons slot="end" *ngIf="post.user?._id === currentUserId">
+              <ion-button color="danger" (click)="eliminarPublicacion(i)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+          <img *ngIf="post.image" [src]="post.image" alt="Imagen de la publicación" class="post-image" />
+          <ion-card-content>
+            <ion-item>
+              <ion-input
+                placeholder="Escribe un comentario..."
+                [(ngModel)]="nuevoComentario[post._id]"
+              ></ion-input>
+              <ion-button (click)="agregarComentario(post._id)">Comentar</ion-button>
+            </ion-item>
+            <ion-list>
+              <ion-item *ngFor="let comment of post.comments">
+                <ion-avatar slot="start">
+                  <img [src]="comment.user?.profilePicture || 'assets/img/default-avatar.jpg'" />
+                </ion-avatar>
+                <ion-label>
+                  <h3>{{ comment.user?.name || 'Usuario desconocido' }}</h3>
+                  <p>{{ comment.text }}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+            <ion-item>
+              <ion-button color="primary" (click)="incrementarLikes(post._id)">
+                <ion-icon name="heart-outline"></ion-icon>
+                <span style="margin-left: 8px;">{{ post.likes }}</span>
+              </ion-button>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
       </ng-container>
     </ion-list>
   </div>

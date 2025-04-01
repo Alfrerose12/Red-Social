@@ -23,17 +23,53 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/${endpoint}`, credentials);
   }
 
-  createPost(postData: {content: string}): Observable<any> {
-    return this.http.post(`${this.apiUrl}/posts`, postData);
+
+  createPost(postData: { content: string }): Observable<any> {
+    const token = localStorage.getItem('token'); // Obtén el token del almacenamiento local
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`, // Incluye el token en el encabezado
+      'Content-Type': 'application/json', // Asegúrate de que el contenido sea JSON
+    });
+  
+    console.log('Token enviado:', token); // Verifica el token
+    console.log('Datos enviados al backend:', postData); // Verifica los datos enviados
+  
+    return this.http.post(`${this.apiUrl}/posts`, postData, { headers });
   }
 
-  deletePost(postId: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/posts/${postId}`);
+  getPosts(): Observable<any> {
+    const token = localStorage.getItem('token');
+    console.log('Token enviado:', token); // Verifica el token
+  
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+  
+    return this.http.get(`${this.apiUrl}/posts`, { headers });
   }
 
-  addComment(commentData: {postId: string; text: string}): Observable<any> {
-    return this.http.post(`${this.apiUrl}/comments`, commentData);
-  }
+ // Eliminar una publicación
+ deletePost(postId: string): Observable<any> {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`,
+  });
+
+  return this.http.delete(`${this.apiUrl}/posts/${postId}`, { headers });
+}
+
+addComment(comment: { text: string; postId: string }): Observable<any> {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`,
+  });
+
+  return this.http.post(`${this.apiUrl}/comments`, comment, { headers });
+}
+
+getComments(postId: string): Observable<any> {
+  return this.http.get(`${this.apiUrl}/comments/${postId}`);
+}
 
   likePost(postId: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/likes`, { postId });
@@ -54,6 +90,8 @@ export class ApiService {
       })
     );
   }
+
+  
 
   updateProfile(profileData: { name?: string; email?: string; profilePicture?: string }): Observable<any> {
     const token = localStorage.getItem('token'); // Obtener el token del almacenamiento local
