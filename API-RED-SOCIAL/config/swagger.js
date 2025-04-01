@@ -7,12 +7,12 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'API de Publicaciones',
+      title: 'API de Red Social',
       version: '1.0.0',
       description: 'Documentación de la API para gestionar usuarios, publicaciones, comentarios y likes.',
     },
     servers: [{
-      url: 'http://localhost:5000',
+      url: 'http://localhost:3004',
       description: 'Servidor de desarrollo'
     }],
   },

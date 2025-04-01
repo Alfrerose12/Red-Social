@@ -37,7 +37,7 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'API de Publicaciones',
+      title: 'API de Red Social',
       version: '1.0.0',
       description: 'Documentación de la API para gestionar usuarios, publicaciones, comentarios y likes.',
     },
@@ -48,7 +48,7 @@ const options = {
       },
     ],
   },
-  apis: ['./routes/*.js'], // Asegúrate de que esta ruta apunte a tu archivo de rutas
+  apis: ['./routes/index.js'], // Asegúrate de que esta ruta apunte a tu archivo de rutas
 };
 
 // Generar especificaciones Swagger
